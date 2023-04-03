@@ -1,0 +1,6 @@
+suites:
+    main:
+        namespace: MonsieurBiz\SyliusContactRequestPlugin
+        psr4_prefix: MonsieurBiz\SyliusContactRequestPlugin
+        src_path: src
+        spec_path: tests
