@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := help
 SHELL=/bin/bash
 APP_DIR=tests/Application
-SYLIUS_VERSION=1.11.3
+SYLIUS_VERSION=1.12.0
 SYMFONY=cd ${APP_DIR} && symfony
 COMPOSER=symfony composer
 CONSOLE=${SYMFONY} console
@@ -9,6 +9,7 @@ export COMPOSE_PROJECT_NAME=contact-request
 PLUGIN_NAME=sylius-${COMPOSE_PROJECT_NAME}-plugin
 COMPOSE=docker-compose
 YARN=yarn
+DOCTRINE_MIGRATIONS_NAMESPACE=MonsieurBiz\SyliusContactRequestPlugin\Migrations
 
 ###
 ### DEVELOPMENT
@@ -70,6 +71,7 @@ setup_application:
 	(cd ${APP_DIR} && ${COMPOSER} config extra.symfony.allow-contrib true)
 	(cd ${APP_DIR} && ${COMPOSER} config minimum-stability dev)
 	(cd ${APP_DIR} && ${COMPOSER} config --no-plugins allow-plugins true)
+	(cd ${APP_DIR} && ${COMPOSER} config --no-plugins --json extra.symfony.endpoint '["https://api.github.com/repos/monsieurbiz/symfony-recipes/contents/index.json?ref=flex/master","flex://defaults"]')
 	(cd ${APP_DIR} && ${COMPOSER} require --no-install --no-scripts --no-progress sylius/sylius="~${SYLIUS_VERSION}") # Make sure to install the required version of sylius because the sylius-standard has a soft constraint
 	$(MAKE) ${APP_DIR}/.php-version
 	$(MAKE) ${APP_DIR}/php.ini
@@ -106,7 +108,7 @@ apply_dist:
 ### TESTS
 ### ¯¯¯¯¯
 
-test.all: test.composer test.phpstan test.phpmd test.phpspec test.phpcs test.yaml test.schema test.twig test.container ## Run all tests in once
+test.all: test.composer test.phpstan test.phpmd test.phpcs test.yaml test.schema test.twig test.container ## Run all tests in once
 
 test.composer: ## Validate composer.json
 	${COMPOSER} validate --strict
@@ -116,12 +118,6 @@ test.phpstan: ## Run PHPStan
 
 test.phpmd: ## Run PHPMD
 	${COMPOSER} phpmd
-
-test.phpunit: ## Run PHPUnit
-	${COMPOSER} phpunit
-
-test.phpspec: ## Run PHPSpec
-	${COMPOSER} phpspec
 
 test.phpcs: ## Run PHP CS Fixer in dry-run
 	${COMPOSER} run -- phpcs --dry-run -v
@@ -143,9 +139,15 @@ test.twig: ## Validate Twig templates
 
 ###
 ### SYLIUS
+### ¯¯
+doctrine.migration.diff:
+	${CONSOLE} doctrine:migrations:diff --namespace="${DOCTRINE_MIGRATIONS_NAMESPACE}"
+.PHONY: doctrine.migration.diff
+###
+### SYLIUS
 ### ¯¯¯¯¯¯
 
-sylius: dependencies sylius.database sylius.fixtures sylius.assets ## Install Sylius
+sylius: dependencies sylius.database sylius.fixtures sylius.assets messenger.setup ## Install Sylius
 .PHONY: sylius
 
 sylius.database: ## Setup the database
@@ -161,14 +163,9 @@ sylius.assets: ## Install all assets with symlinks
 	${CONSOLE} sylius:install:assets
 	${CONSOLE} sylius:theme:assets:install --symlink
 
-symfony.migration.generate: ## Generate migration file
-	${CONSOLE} doctrine:migrations:diff --namespace="MonsieurBiz\SyliusContactRequestPlugin\Migrations"
+messenger.setup: ## Setup Messenger transports
+	${CONSOLE} messenger:setup-transports
 
-symfony.migration.execute: ## Execute migration file
-	${CONSOLE} doctrine:migrations:execute ${ARGS}
-
-symfony.migration.migrate: ## Execute migration file
-	${CONSOLE} doctrine:migrations:migrate
 ###
 ### PLATFORM
 ### ¯¯¯¯¯¯¯¯

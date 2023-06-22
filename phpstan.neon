@@ -8,10 +8,10 @@ parameters:
         - %rootDir%/src/
 
     checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
 
     excludePaths:
         # Makes PHPStan crash
-        - 'src/DependencyInjection/Configuration.php'
         - 'src/DependencyInjection/MonsieurBizSyliusContactRequestExtension.php'
 
         # Test dependencies

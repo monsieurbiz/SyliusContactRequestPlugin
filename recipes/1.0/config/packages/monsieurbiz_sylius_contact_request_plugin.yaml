@@ -1,0 +1,2 @@
+imports:
+  - { resource: "@MonsieurBizSyliusContactRequestPlugin/Resources/config/config.yaml" }

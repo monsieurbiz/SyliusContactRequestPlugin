@@ -48,9 +48,6 @@ $config
         'blank_line_after_opening_tag' => true,
         'blank_line_after_namespace' => true,
         'blank_line_before_statement' => true,
-        'braces' => [
-            'allow_single_line_closure' => true,
-        ],
         'cast_spaces' => true,
         'class_attributes_separation' => true,
         'class_definition' => [
@@ -228,7 +225,6 @@ $config
         'self_accessor' => true,
         'short_scalar_cast' => true,
         'single_blank_line_at_eof' => true,
-        'single_blank_line_before_namespace' => true,
         'single_class_element_per_statement' => true,
         'single_import_per_statement' => true,
         'single_line_after_imports' => true,
@@ -254,7 +250,7 @@ $config
             ],
         ],
         'void_return' => true,
-        'whitespace_after_comma_in_array' => true, // alerady in symfony set
+        'whitespace_after_comma_in_array' => true, // already set in symfony
     ])
     ->setFinder($finder)
 ;

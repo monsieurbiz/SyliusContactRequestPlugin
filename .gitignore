@@ -14,9 +14,9 @@
 /var
 /public
 /bin
-/config
 /.php-version
 /php.ini
 /.phpunit.result.cache
 /node_modules
 /yarn.lock
+/.php-cs-fixer.cache
