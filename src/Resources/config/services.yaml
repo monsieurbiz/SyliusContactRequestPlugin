@@ -1,13 +1,19 @@
 services:
-  _defaults:
-    autowire: true
-    autoconfigure: true
-    public: false
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true
 
-  _instanceof:
-    Sylius\Bundle\ResourceBundle\Controller\ResourceController:
-      autowire: false
-    Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType:
-      autowire: false
-    Sylius\Component\Resource\Model\ResourceInterface:
-      autowire: false
+    MonsieurBiz\SyliusContactRequestPlugin\:
+        resource: '../../*'
+        exclude: '../../{Entity,Migrations}'
+
+    # Save contact request entity
+    MonsieurBiz\SyliusContactRequestPlugin\EmailManager\DecorateContactEmailManager:
+        decorates: 'sylius.email_manager.contact'
+        arguments: [ '@.inner' ]
+
+    # Add admin menu
+    MonsieurBiz\SyliusContactRequestPlugin\Menu\AdminMenuListener:
+        tags:
+            - { name: kernel.event_listener, event: sylius.menu.admin.main, priority: -100 }

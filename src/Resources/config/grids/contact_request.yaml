@@ -1,0 +1,54 @@
+sylius_grid:
+    grids:
+        monsieurbiz_contact_request:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: '%monsieurbiz_contact_request.model.contact_request.class%'
+            sorting:
+                id: desc
+            filters:
+                email:
+                    label: sylius.ui.email
+                    type: string
+                channel:
+                    type: entity
+                    label: sylius.ui.channel
+                    form_options:
+                        class: "%sylius.model.channel.class%"
+            fields:
+                id:
+                    label: sylius.ui.id
+                    type: string
+                    sortable: ~
+                email:
+                    label: sylius.ui.email
+                    type: string
+                message:
+                    label: sylius.ui.message
+                    type: string
+                channel:
+                    type: twig
+                    label: sylius.ui.channel
+                    options:
+                        template: "@SyliusAdmin/Channel/Grid/Field/name.html.twig"
+                createdAt:
+                    label: sylius.ui.created_at
+                    type: datetime
+                    sortable: true
+            actions:
+                item:
+                    show:
+                        type: show
+                    delete:
+                        type:
+                            delete
+                bulk:
+                    delete:
+                        type: delete
+                        label: sylius.ui.delete
+                        enabled: true
+                        icon: trash
+                        position: 100
+                        options: { }
+

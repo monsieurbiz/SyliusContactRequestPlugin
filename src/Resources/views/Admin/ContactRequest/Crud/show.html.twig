@@ -1,0 +1,41 @@
+{% extends '@SyliusAdmin/layout.html.twig' %}
+{% import '@SyliusAdmin/Macro/breadcrumb.html.twig' as breadcrumb %}
+
+{% block title %}{{ 'monsieurbiz.contact_request.ui.contact_requests'|trans }} {{ parent() }}{% endblock %}
+
+{% block content %}
+
+    {% set breadcrumbs = [
+        { label: 'sylius.ui.administration'|trans, url: path('sylius_admin_dashboard') },
+        { label: 'monsieurbiz.contact_request.ui.contact_requests'|trans, url: path('monsieurbiz_contact_request_admin_contact_request_index') },
+        { label: resource.id }
+    ] %}
+
+    <div class="ui stackable two column grid">
+        <div class="ten wide column">
+            <h1 class="ui header">
+                <i class="circular phone icon"></i>
+                <div class="content">
+                    {{ 'monsieurbiz.contact_request.ui.contact_request'|trans }}
+                </div>
+            </h1>
+        </div>
+    </div>
+
+    {{ breadcrumb.crumble(breadcrumbs) }}
+
+    <div class="ui divider"></div>
+
+    <div class="ui fluid card">
+        <div class="content">
+            <h2>{{ 'monsieurbiz.contact_request.ui.email'|trans }}</h2>
+            <p>
+                {{ resource.email|default('') }}
+            </p>
+            <h2>{{ 'monsieurbiz.contact_request.ui.message'|trans }}</h2>
+            <div>
+                {{ resource.message|nl2br|default('')|raw }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

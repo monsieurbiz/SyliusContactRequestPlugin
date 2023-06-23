@@ -1,0 +1,7 @@
+monsieurbiz:
+    contact_request:
+        ui:
+            contact_requests: 'Contact requests'
+            contact_request: 'Contact request'
+            email: 'Email'
+            message: 'Message'

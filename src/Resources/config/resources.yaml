@@ -1,0 +1,6 @@
+sylius_resource:
+    resources:
+        monsieurbiz_contact_request.contact_request:
+            classes:
+                model: MonsieurBiz\SyliusContactRequestPlugin\Entity\ContactRequest
+                interface: MonsieurBiz\SyliusContactRequestPlugin\Entity\ContactRequestInterface
