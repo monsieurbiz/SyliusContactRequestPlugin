@@ -13,7 +13,6 @@ namespace MonsieurBiz\SyliusContactRequestPlugin\EmailManager;
 
 use Doctrine\ORM\EntityManagerInterface;
 use MonsieurBiz\SyliusContactRequestPlugin\Entity\ContactRequestInterface;
-use Sylius\Bundle\ShopBundle\EmailManager\ContactEmailManager;
 use Sylius\Bundle\ShopBundle\EmailManager\ContactEmailManagerInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
@@ -21,7 +20,7 @@ use Sylius\Component\Resource\Factory\FactoryInterface;
 final class DecorateContactEmailManager implements ContactEmailManagerInterface
 {
     public function __construct(
-        private ContactEmailManager $decoratedContactEmailManager,
+        private ContactEmailManagerInterface $decoratedContactEmailManager,
         private FactoryInterface $contactRequestFactory,
         private EntityManagerInterface $contactRequestManager,
     ) {
