@@ -17,3 +17,9 @@ services:
     MonsieurBiz\SyliusContactRequestPlugin\Menu\AdminMenuListener:
         tags:
             - { name: kernel.event_listener, event: sylius.menu.admin.main, priority: -100 }
+
+    # Custom contact request factory
+    MonsieurBiz\SyliusContactRequestPlugin\Factory\ContactRequestFactory:
+        decorates: 'monsieurbiz_contact_request.factory.contact_request'
+        arguments: [ '@.inner' ]
+

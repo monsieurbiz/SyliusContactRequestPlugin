@@ -12,16 +12,15 @@ declare(strict_types=1);
 namespace MonsieurBiz\SyliusContactRequestPlugin\EmailManager;
 
 use Doctrine\ORM\EntityManagerInterface;
-use MonsieurBiz\SyliusContactRequestPlugin\Entity\ContactRequestInterface;
+use MonsieurBiz\SyliusContactRequestPlugin\Factory\ContactRequestFactoryInterface;
 use Sylius\Bundle\ShopBundle\EmailManager\ContactEmailManagerInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
-use Sylius\Component\Resource\Factory\FactoryInterface;
 
 final class DecorateContactEmailManager implements ContactEmailManagerInterface
 {
     public function __construct(
         private ContactEmailManagerInterface $decoratedContactEmailManager,
-        private FactoryInterface $contactRequestFactory,
+        private ContactRequestFactoryInterface $contactRequestFactory,
         private EntityManagerInterface $contactRequestManager,
     ) {
     }
@@ -34,12 +33,7 @@ final class DecorateContactEmailManager implements ContactEmailManagerInterface
             return;
         }
 
-        /** @var ContactRequestInterface $contactRequest */
-        $contactRequest = $this->contactRequestFactory->createNew();
-        $contactRequest->setEmail($data['email']);
-        $contactRequest->setMessage($data['message']);
-        $contactRequest->setChannel($channel);
-
+        $contactRequest = $this->contactRequestFactory->createNewFromChannelAndData($channel, $data);
         $this->contactRequestManager->persist($contactRequest);
         $this->contactRequestManager->flush();
     }
