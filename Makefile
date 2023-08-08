@@ -10,6 +10,7 @@ PLUGIN_NAME=sylius-${COMPOSE_PROJECT_NAME}-plugin
 COMPOSE=docker-compose
 YARN=yarn
 DOCTRINE_MIGRATIONS_NAMESPACE=MonsieurBiz\SyliusContactRequestPlugin\Migrations
+DOCTRINE_ORM_CONFLICT_VERSION=">= 2.15.2"
 
 ###
 ### DEVELOPMENT
@@ -72,6 +73,9 @@ setup_application:
 	(cd ${APP_DIR} && ${COMPOSER} config minimum-stability dev)
 	(cd ${APP_DIR} && ${COMPOSER} config --no-plugins allow-plugins true)
 	(cd ${APP_DIR} && ${COMPOSER} config --no-plugins --json extra.symfony.endpoint '["https://api.github.com/repos/monsieurbiz/symfony-recipes/contents/index.json?ref=flex/master","flex://defaults"]')
+ifdef DOCTRINE_ORM_CONFLICT_VERSION
+	(cd ${APP_DIR} && cat composer.json | jq --indent 4 '.conflict += {"doctrine/orm": ${DOCTRINE_ORM_CONFLICT_VERSION}}' > composer.json.tmp && mv composer.json.tmp composer.json)
+endif
 	(cd ${APP_DIR} && ${COMPOSER} require --no-install --no-scripts --no-progress sylius/sylius="~${SYLIUS_VERSION}") # Make sure to install the required version of sylius because the sylius-standard has a soft constraint
 	$(MAKE) ${APP_DIR}/.php-version
 	$(MAKE) ${APP_DIR}/php.ini
