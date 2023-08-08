@@ -28,6 +28,7 @@
 
     <div class="ui fluid card">
         <div class="content">
+            {{ sylius_template_event('monsieurbiz_contact.admin.contact_request.before_content', {'resource': resource}) }}
             <h2>{{ 'monsieurbiz.contact_request.ui.email'|trans }}</h2>
             <p>
                 {{ resource.email|default('') }}
@@ -36,6 +37,7 @@
             <div>
                 {{ resource.message|nl2br|default('')|raw }}
             </div>
+            {{ sylius_template_event('monsieurbiz_contact.admin.contact_request.after_content', {'resource': resource}) }}
         </div>
     </div>
 {% endblock %}
