@@ -31,9 +31,9 @@ composer require monsieurbiz/sylius-contact-request-plugin
 
 ## Getting started
 
-Submit a contact request from the native contact form. Them go in the back-office in the customer menu node you will have a new menu 'contact requests', click on it and 
+Submit a contact request from the native contact form. Then go in the back-office in the customer menu node you will have a new menu 'contact requests', click on it, and 
 you can see a grid with the contact requests created.
-Obviously, this plugin is not retroactive and contact requests made before the plugin was installed will not be displayed.
+Obviously, this plugin is not retroactive and contact requests made before this plugin was installed will not be displayed.
 
 ### For the installation without flex, follow these additional steps
 
@@ -41,6 +41,7 @@ Change your `config/bundles.php` file to add this line for the plugin declaratio
 
 ```php
 <?php
+// config/bundles.php
 
 return [
     //..
@@ -51,7 +52,26 @@ return [
 Copy the plugin configuration files in your `config` folder:
 
 ```bash
-cp -Rv vendor/monsieurbiz/sylius-contact-request-plugin/recipes/1.0/config/ config
+cp --recursive --verbose vendor/monsieurbiz/sylius-contact-request-plugin/recipes/1.0/config/* config
+```
+
+### Migrations
+
+Run previous Doctrie migrations, if any, to have application synchronized with SQL database :
+```php
+bin/console doctrine:migrations:migrate
+```
+
+Make a doctrine migration diff : 
+
+```php
+bin/console doctrine:migrations:diff
+```
+
+Then run it : 
+
+```php
+bin/console doctrine:migrations:migrate
 ```
 
 ## Contributing
