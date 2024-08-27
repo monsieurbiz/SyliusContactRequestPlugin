@@ -2,18 +2,31 @@
 
 <h1 align="center">Contact Request for Sylius</h1>
 
-[![Contact Request  Plugin license](https://img.shields.io/github/license/monsieurbiz/SyliusContactRequestPlugin?public)](https://github.com/monsieurbiz/SyliusContactRequestPlugin/blob/master/LICENSE)
-[![Tests Status](https://img.shields.io/github/actions/workflow/status/monsieurbiz/SyliusContactRequestPlugin/tests.yml?branch=master&logo=github)](https://github.com/monsieurbiz/SyliusContactRequestPlugin/actions?query=workflow%3ATests)
-[![Security Status](https://img.shields.io/github/actions/workflow/status/monsieurbiz/SyliusContactRequestPlugin/security.yml?branch=master&label=security&logo=github)](https://github.com/monsieurbiz/SyliusContactRequestPlugin/actions?query=workflow%3ASecurity)
+[![Contact Request Plugin license](https://img.shields.io/github/license/monsieurbiz/SyliusContactRequestPlugin?public)](https://github.com/monsieurbiz/SyliusContactRequestPlugin/blob/master/LICENSE.txt)
+[![Tests Status](https://img.shields.io/github/actions/workflow/status/monsieurbiz/SyliusContactRequestPlugin/tests.yaml?branch=master&logo=github)](https://github.com/monsieurbiz/SyliusContactRequestPlugin/actions?query=workflow%3ATests)
+[![Recipe Status](https://img.shields.io/github/actions/workflow/status/monsieurbiz/SyliusContactRequestPlugin/recipe.yaml?branch=master&label=recipes&logo=github)](https://github.com/monsieurbiz/SyliusContactRequestPlugin/actions?query=workflow%3ASecurity)
+[![Security Status](https://img.shields.io/github/actions/workflow/status/monsieurbiz/SyliusContactRequestPlugin/security.yaml?branch=master&label=security&logo=github)](https://github.com/monsieurbiz/SyliusContactRequestPlugin/actions?query=workflow%3ASecurity)
 
 This plugin saves contact requests made on the native form into the database allowing us to see them in the back-office of Sylius.
 
 ![Demo of the Contact Request](docs/images/demo1.png)
 ![Demo of the Contact Request](docs/images/demo2.png)
 
+## Compatibility
+
+| Sylius Version | PHP Version |
+|---|---|
+| 1.11 | 8.0 - 8.1 |
+| 1.12 | 8.1 - 8.2 |
+| 1.13 | 8.1 - 8.2 |
+
 ## Installation
 
-Install the plugin via composer:
+If you want to use our recipes, you can configure your composer.json by running:
+
+```bash
+composer config --no-plugins --json extra.symfony.endpoint '["https://api.github.com/repos/monsieurbiz/symfony-recipes/contents/index.json?ref=flex/master","flex://defaults"]'
+```
 
 ```bash
 composer require monsieurbiz/sylius-contact-request-plugin
@@ -38,10 +51,18 @@ return [
 ];
 ```
 
-Copy the plugin configuration files in your `config` folder:
+Create a new file `config/packages/monsieurbiz_sylius_contact_request.yaml` and add the following configuration:
 
-```bash
-cp -Rv vendor/monsieurbiz/sylius-contact-request-plugin/recipes/1.0/config/ config
+```yaml
+imports:
+  - { resource: "@MonsieurBizSyliusContactRequestPlugin/Resources/config/config.yaml" }
+```
+
+Create a new file `config/routes/monsieurbiz_sylius_contact_request.yaml` and add the following configuration:
+
+```yaml
+imports:
+    resource: '@MonsieurBizSyliusContactRequestPlugin/Resources/config/routes.yaml'
 ```
 
 ## Contributing

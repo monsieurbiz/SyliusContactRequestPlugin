@@ -1,2 +1,0 @@
-imports:
-    resource: '@MonsieurBizSyliusContactRequestPlugin/Resources/config/routes.yaml'
