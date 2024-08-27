@@ -6,7 +6,9 @@
     "license": "MIT",
     "require": {
         "php": "^8.0",
-        "sylius/sylius": ">=1.11 <1.14"
+        "sylius/sylius": ">=1.11 <1.14",
+        "monsieurbiz/sylius-settings-plugin": "^1.2.0",
+        "monsieurbiz/sylius-rich-editor-plugin": "^2.8.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.16",

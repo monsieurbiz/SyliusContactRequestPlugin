@@ -7,10 +7,10 @@
 [![Recipe Status](https://img.shields.io/github/actions/workflow/status/monsieurbiz/SyliusContactRequestPlugin/recipe.yaml?branch=master&label=recipes&logo=github)](https://github.com/monsieurbiz/SyliusContactRequestPlugin/actions?query=workflow%3ASecurity)
 [![Security Status](https://img.shields.io/github/actions/workflow/status/monsieurbiz/SyliusContactRequestPlugin/security.yaml?branch=master&label=security&logo=github)](https://github.com/monsieurbiz/SyliusContactRequestPlugin/actions?query=workflow%3ASecurity)
 
-This plugin saves contact requests made on the native form into the database allowing us to see them in the back-office of Sylius.
+This plugin allows you to customize the contact page on the front-end of your Sylius store. It stores all contact requests made through the native Sylius form in the database, making them accessible directly from the Sylius back office.
 
-![Demo of the Contact Request](docs/images/demo1.png)
-![Demo of the Contact Request](docs/images/demo2.png)
+![Demo of the Contact Request](docs/images/admin-list.png)
+![Demo of the Contact Request](docs/images/demo-shop.jpg)
 
 ## Compatibility
 
@@ -33,6 +33,12 @@ composer require monsieurbiz/sylius-contact-request-plugin
 ```
 
 ## Getting started
+
+### Contact page customization
+
+![Demo of the Contact Request](docs/images/settings.jpg)
+
+### Contact request storage
 
 Submit a contact request from the native contact form. Them go in the back-office in the customer menu node you will have a new menu 'contact requests', click on it and 
 you can see a grid with the contact requests created.
@@ -64,6 +70,23 @@ Create a new file `config/routes/monsieurbiz_sylius_contact_request.yaml` and ad
 imports:
     resource: '@MonsieurBizSyliusContactRequestPlugin/Resources/config/routes.yaml'
 ```
+
+To override the default sylius route for contact page, create a new file `config/routes/sylius_shop_contact_request_override.yaml` and add the following configuration:
+
+```yaml
+sylius_shop_contact_request:
+    path: /{_locale}/contact
+    requirements:
+        _locale: ^[A-Za-z]{2,4}(_([A-Za-z]{4}|[0-9]{3}))?(_([A-Za-z]{2}|[0-9]{3}))?$
+    methods: [GET, POST]
+    defaults:
+        _controller: sylius.controller.shop.contact::requestAction
+        _sylius:
+            redirect: sylius_shop_homepage
+            template: '@MonsieurBizSyliusContactRequestPlugin/Shop/ContactRequest/request.html.twig'
+```
+
+This is the same as Sylius route configuration instead of the template key which is overridden to use the plugin template.
 
 ## Contributing
 
