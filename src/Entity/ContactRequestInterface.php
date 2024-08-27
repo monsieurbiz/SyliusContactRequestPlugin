@@ -2,7 +2,9 @@
 
 /*
  * This file is part of Monsieur Biz' Contact Request plugin for Sylius.
+ *
  * (c) Monsieur Biz <sylius@monsieurbiz.com>
+ *
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
@@ -11,6 +13,7 @@ declare(strict_types=1);
 
 namespace MonsieurBiz\SyliusContactRequestPlugin\Entity;
 
+use DateTimeInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TimestampableInterface;
@@ -31,11 +34,11 @@ interface ContactRequestInterface extends ResourceInterface, TimestampableInterf
 
     public function setChannel(?ChannelInterface $channel): void;
 
-    public function getCreatedAt(): ?\DateTimeInterface;
+    public function getCreatedAt(): ?DateTimeInterface;
 
-    public function setCreatedAt(?\DateTimeInterface $createdAt): void;
+    public function setCreatedAt(?DateTimeInterface $createdAt): void;
 
-    public function getUpdatedAt(): ?\DateTimeInterface;
+    public function getUpdatedAt(): ?DateTimeInterface;
 
-    public function setUpdatedAt(?\DateTimeInterface $updatedAt): void;
+    public function setUpdatedAt(?DateTimeInterface $updatedAt): void;
 }
