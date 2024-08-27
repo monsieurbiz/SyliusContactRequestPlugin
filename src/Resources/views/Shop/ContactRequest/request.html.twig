@@ -1,0 +1,65 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% form_theme form '@SyliusShop/Form/theme.html.twig' %}
+
+{% set metaTitle = setting('monsieurbiz_contact_request.contact', 'meta_title')|default('') %}
+{% set metaDescription = setting('monsieurbiz_contact_request.contact', 'meta_description')|default('') %}
+{% set metaKeywords = setting('monsieurbiz_contact_request.contact', 'meta_keywords')|default('') %}
+
+{% block title %}{{ metaTitle is not empty ? metaTitle : (('sylius.ui.contact_us'|trans) ~ ' | ' ~ parent()) }}{% endblock %}
+
+{% block metatags %}
+    {{ parent() }}
+    <meta property="og:type" content="page" />
+    {% if metaTitle is not empty %}
+        <meta property="og:title" content="{{ metaTitle }}"/>
+    {% endif %}
+    {% if metaDescription is not empty %}
+        <meta name="description" property="og:description" content="{{ metaDescription }}"/>
+    {% endif %}
+    {% if metaKeywords is not empty %}
+        <meta name="keywords" content="{{ metaKeywords }}"/>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="ui hidden divider"></div>
+    <div class="ui two column centered stackable grid">
+        <div class="column">
+            {% set hideSyliusDefaultContent = setting('monsieurbiz_contact_request.contact', 'hide_sylius_default_content')|default(false) %}
+            {% if not hideSyliusDefaultContent %}
+                <h1 class="ui header">
+                    <i class="circular mail icon"></i>
+                    <div class="content">
+                        {{ 'sylius.ui.contact_us'|trans }}
+                        <div class="sub header">{{ 'sylius.ui.use_the_contact_form_below_to_send_us_a_message'|trans }}</div>
+
+                        {{ sylius_template_event('sylius.shop.contact.request.after_content_header') }}
+                    </div>
+                </h1>
+            {% endif %}
+
+            {% set contentBeforeForm = setting('monsieurbiz_contact_request.contact', 'content_before_form')|default('') %}
+            {% if contentBeforeForm is not empty %}
+                {{ contentBeforeForm|monsieurbiz_richeditor_render_field }}
+            {% endif %}
+
+            <div class="ui segment">
+                {{ form_start(form, {'action': path('sylius_shop_contact_request'), 'attr': {'class': 'ui large loadable form', 'novalidate': 'novalidate'}}) }}
+                {{ form_row(form.email, sylius_test_form_attribute('contact-email')) }}
+                {{ form_row(form.message, sylius_test_form_attribute('contact-message')) }}
+
+                {{ sylius_template_event('sylius.shop.contact.request.form', {'form': form}) }}
+
+                {{ form_row(form._token) }}
+                <button type="submit" class="ui fluid large primary submit button" {{ sylius_test_html_attribute('send-button') }}>{{ 'sylius.ui.send'|trans }}</button>
+                {{ form_end(form, {'render_rest': false}) }}
+            </div>
+
+            {% set contentAfterForm = setting('monsieurbiz_contact_request.contact', 'content_after_form')|default('') %}
+            {% if contentAfterForm is not empty %}
+                {{ contentAfterForm|monsieurbiz_richeditor_render_field }}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

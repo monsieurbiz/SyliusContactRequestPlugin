@@ -1,0 +1,10 @@
+monsieurbiz_sylius_settings:
+    plugins:
+        monsieurbiz_contact_request.contact:
+            vendor_name: Monsieur Biz
+            plugin_name: monsieurbiz.contact_request.settings.plugin_name
+            description: monsieurbiz.contact_request.settings.description
+            icon: phone
+            use_locales: true
+            classes:
+                form: MonsieurBiz\SyliusContactRequestPlugin\Form\Type\ContactSettingsType

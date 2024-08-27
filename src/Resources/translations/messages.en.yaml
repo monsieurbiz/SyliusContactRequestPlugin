@@ -5,3 +5,12 @@ monsieurbiz:
             contact_request: 'Contact request'
             email: 'Email'
             message: 'Message'
+            content_before_form: 'Content before the contact form'
+            content_after_form: 'Content after the contact form'
+            meta_title: "Meta Title"
+            meta_description: "Meta Description"
+            meta_keywords: "Meta Keyword"
+            hide_sylius_default_content: "Hide Sylius default content"
+        settings:
+            plugin_name: 'Contact page'
+            description: 'Configure the contact page'
