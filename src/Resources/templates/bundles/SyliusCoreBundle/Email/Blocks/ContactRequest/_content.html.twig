@@ -1,0 +1,33 @@
+<div style="text-align: left;">
+    <div style="color: #1abb9c;">
+        <strong>{{ 'sylius.email.contact_request.message_from'|trans({}, null, localeCode) }}:</strong>
+    </div>
+    <div style="margin-bottom: 20px;">{{ data.email }}</div>
+
+    {% if data.name|default('') is not empty %}
+        <div style="color: #1abb9c;">
+            <strong>{{ 'monsieurbiz.contact_request.form.name'|trans({}, null, localeCode) }}:</strong>
+        </div>
+        <div style="margin-bottom: 20px;">{{ data.name|default('') }}</div>
+
+    {% endif %}
+
+    {% if data.company|default('') is not empty %}
+        <div style="color: #1abb9c;">
+            <strong>{{ 'monsieurbiz.contact_request.form.company'|trans({}, null, localeCode) }}:</strong>
+        </div>
+        <div style="margin-bottom: 20px;">{{ data.company|default('') }}</div>
+    {% endif %}
+
+    {% if data.phoneNumber|default('') is not empty %}
+        <div style="color: #1abb9c;">
+            <strong>{{ 'monsieurbiz.contact_request.form.phone_number'|trans({}, null, localeCode) }}:</strong>
+        </div>
+        <div style="margin-bottom: 20px;">{{ data.phoneNumber|default('') }}</div>
+    {% endif %}
+
+    <div style="color: #1abb9c;">
+        <strong>{{ 'sylius.email.contact_request.content'|trans({}, null, localeCode) }}:</strong>
+    </div>
+    <div>{{ data.message|nl2br }}</div>
+</div>

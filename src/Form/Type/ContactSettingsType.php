@@ -24,6 +24,7 @@ final class ContactSettingsType extends AbstractSettingsType implements Settings
 {
     /**
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -47,10 +48,55 @@ final class ContactSettingsType extends AbstractSettingsType implements Settings
         );
         $this->addWithDefaultCheckbox(
             $builder,
-            'meta_title',
-            TextType::class,
+            'field_name_displayed',
+            CheckboxType::class,
             [
-                'label' => 'monsieurbiz.contact_request.ui.meta_title',
+                'label' => 'monsieurbiz.contact_request.settings.field_name_displayed',
+                'required' => false,
+            ]
+        );
+        $this->addWithDefaultCheckbox(
+            $builder,
+            'field_name_required',
+            CheckboxType::class,
+            [
+                'label' => 'monsieurbiz.contact_request.settings.field_name_required',
+                'required' => false,
+            ]
+        );
+        $this->addWithDefaultCheckbox(
+            $builder,
+            'field_company_displayed',
+            CheckboxType::class,
+            [
+                'label' => 'monsieurbiz.contact_request.settings.field_company_displayed',
+                'required' => false,
+            ]
+        );
+        $this->addWithDefaultCheckbox(
+            $builder,
+            'field_company_required',
+            CheckboxType::class,
+            [
+                'label' => 'monsieurbiz.contact_request.settings.field_company_required',
+                'required' => false,
+            ]
+        );
+        $this->addWithDefaultCheckbox(
+            $builder,
+            'field_phone_number_displayed',
+            CheckboxType::class,
+            [
+                'label' => 'monsieurbiz.contact_request.settings.field_phone_number_displayed',
+                'required' => false,
+            ]
+        );
+        $this->addWithDefaultCheckbox(
+            $builder,
+            'field_phone_number_required',
+            CheckboxType::class,
+            [
+                'label' => 'monsieurbiz.contact_request.settings.field_phone_number_required',
                 'required' => false,
             ]
         );

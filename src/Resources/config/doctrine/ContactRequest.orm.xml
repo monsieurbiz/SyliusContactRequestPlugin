@@ -11,6 +11,9 @@
         </id>
         <field name="email" column="email"/>
         <field name="message" type="text" column="message"/>
+        <field name="name" type="string" column="name" nullable="true"/>
+        <field name="company" type="string" column="company" nullable="true"/>
+        <field name="phoneNumber" type="string" column="phone_number" nullable="true"/>
         <field name="createdAt" column="created_at" type="datetime_immutable">
             <gedmo:timestampable on="create"/>
         </field>

@@ -41,4 +41,16 @@ interface ContactRequestInterface extends ResourceInterface, TimestampableInterf
     public function getUpdatedAt(): ?DateTimeInterface;
 
     public function setUpdatedAt(?DateTimeInterface $updatedAt): void;
+
+    public function getName(): ?string;
+
+    public function setName(?string $name): void;
+
+    public function getCompany(): ?string;
+
+    public function setCompany(?string $company): void;
+
+    public function getPhoneNumber(): ?string;
+
+    public function setPhoneNumber(?string $phoneNumber): void;
 }

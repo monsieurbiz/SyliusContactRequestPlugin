@@ -11,6 +11,17 @@ monsieurbiz:
             meta_description: "Meta Description"
             meta_keywords: "Meta Keyword"
             hide_sylius_default_content: "Masquer le contenu par défaut de Sylius"
+        form:
+            name: 'Nom'
+            company: 'Entreprise'
+            phone_number: 'Numéro de téléphone'
         settings:
             plugin_name: 'Page de contact'
             description: 'Configurer la page de contact'
+            field_name_displayed: 'Afficher le champ nom'
+            field_name_required: 'Le champ nom est requis'
+            field_company_displayed: 'Afficher le champ entreprise'
+            field_company_required: 'Le champ entreprise est requis'
+            field_phone_number_displayed: 'Afficher le champ téléphone'
+            field_phone_number_required: 'Le champ téléphone est requis'
+

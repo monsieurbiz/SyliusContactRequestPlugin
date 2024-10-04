@@ -47,6 +47,17 @@
             <div class="ui segment">
                 {{ form_start(form, {'action': path('sylius_shop_contact_request'), 'attr': {'class': 'ui large loadable form', 'novalidate': 'novalidate'}}) }}
                 {{ form_row(form.email, sylius_test_form_attribute('contact-email')) }}
+
+                {% if setting('monsieurbiz_contact_request.contact', 'field_name_displayed')|default(false) %}
+                    {{ form_row(form.name) }}
+                {% endif %}
+                {% if setting('monsieurbiz_contact_request.contact', 'field_company_displayed')|default(false) %}
+                    {{ form_row(form.company) }}
+                {% endif %}
+                {% if setting('monsieurbiz_contact_request.contact', 'field_phone_number_displayed')|default(false) %}
+                    {{ form_row(form.phoneNumber) }}
+                {% endif %}
+
                 {{ form_row(form.message, sylius_test_form_attribute('contact-message')) }}
 
                 {{ sylius_template_event('sylius.shop.contact.request.form', {'form': form}) }}
