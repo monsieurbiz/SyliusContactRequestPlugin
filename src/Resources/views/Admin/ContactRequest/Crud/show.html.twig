@@ -33,6 +33,28 @@
             <p>
                 {{ resource.email|default('') }}
             </p>
+
+            {% if resource.name|default('') is not empty %}
+                <h2>{{ 'monsieurbiz.contact_request.form.name'|trans }}</h2>
+                <p>
+                    {{ resource.name|default('') }}
+                </p>
+            {% endif %}
+
+            {% if resource.company|default('') is not empty %}
+                <h2>{{ 'monsieurbiz.contact_request.form.company'|trans }}</h2>
+                <p>
+                    {{ resource.company|default('') }}
+                </p>
+            {% endif %}
+
+            {% if resource.phoneNumber|default('') is not empty %}
+                <h2>{{ 'monsieurbiz.contact_request.form.phone_number'|trans }}</h2>
+                <p>
+                    {{ resource.phoneNumber|default('') }}
+                </p>
+            {% endif %}
+
             <h2>{{ 'monsieurbiz.contact_request.ui.message'|trans }}</h2>
             <div>
                 {{ resource.message|nl2br|default('')|raw }}

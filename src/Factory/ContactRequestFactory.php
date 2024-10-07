@@ -34,6 +34,9 @@ final class ContactRequestFactory implements ContactRequestFactoryInterface
         $contactRequest = $this->createNew();
         $contactRequest->setEmail($data['email']);
         $contactRequest->setMessage($data['message']);
+        $contactRequest->setName($data['name'] ?? null);
+        $contactRequest->setCompany($data['company'] ?? null);
+        $contactRequest->setPhoneNumber($data['phoneNumber'] ?? null);
         $contactRequest->setChannel($channel);
 
         return $contactRequest;

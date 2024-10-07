@@ -8,3 +8,10 @@ monsieurbiz_sylius_settings:
             use_locales: true
             classes:
                 form: MonsieurBiz\SyliusContactRequestPlugin\Form\Type\ContactSettingsType
+            default_values:
+                field_name_displayed: true
+                field_name_required: true
+                field_company_displayed: true
+                field_company_required: false
+                field_phone_number_displayed: true
+                field_phone_number_required: false

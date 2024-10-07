@@ -27,6 +27,12 @@ class ContactRequest implements ContactRequestInterface
 
     private ?string $message;
 
+    private ?string $name;
+
+    private ?string $company;
+
+    private ?string $phoneNumber;
+
     private ?ChannelInterface $channel;
 
     /**
@@ -92,5 +98,35 @@ class ContactRequest implements ContactRequestInterface
     public function setUpdatedAt(?DateTimeInterface $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(?string $name): void
+    {
+        $this->name = $name;
+    }
+
+    public function getCompany(): ?string
+    {
+        return $this->company;
+    }
+
+    public function setCompany(?string $company): void
+    {
+        $this->company = $company;
+    }
+
+    public function getPhoneNumber(): ?string
+    {
+        return $this->phoneNumber;
+    }
+
+    public function setPhoneNumber(?string $phoneNumber): void
+    {
+        $this->phoneNumber = $phoneNumber;
     }
 }
