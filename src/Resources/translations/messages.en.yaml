@@ -11,6 +11,7 @@ monsieurbiz:
             meta_description: "Meta Description"
             meta_keywords: "Meta Keyword"
             hide_sylius_default_content: "Hide Sylius default content"
+            contact_page: 'Contact page'
         form:
             name: 'Name'
             company: 'Company'
@@ -24,3 +25,7 @@ monsieurbiz:
             field_company_required: 'The company field is required'
             field_phone_number_displayed: 'Display the phone field'
             field_phone_number_required: 'The phone field is required'
+
+monsieurbiz_menu:
+    provider:
+        contact_page: 'Contact page'
