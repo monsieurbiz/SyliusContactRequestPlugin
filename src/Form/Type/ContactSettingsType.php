@@ -102,6 +102,15 @@ final class ContactSettingsType extends AbstractSettingsType implements Settings
         );
         $this->addWithDefaultCheckbox(
             $builder,
+            'meta_title',
+            TextType::class,
+            [
+                'label' => 'monsieurbiz.contact_request.ui.meta_title',
+                'required' => false,
+            ]
+        );
+        $this->addWithDefaultCheckbox(
+            $builder,
             'meta_description',
             TextType::class,
             [
