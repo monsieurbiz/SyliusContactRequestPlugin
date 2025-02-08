@@ -28,4 +28,4 @@ monsieurbiz:
 
 monsieurbiz_menu:
     provider:
-        contact_page: 'Contact page'
+        contact: 'Contact page'

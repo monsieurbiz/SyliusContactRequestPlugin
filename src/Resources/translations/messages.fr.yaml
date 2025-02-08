@@ -27,4 +27,4 @@ monsieurbiz:
             field_phone_number_required: 'Le champ téléphone est requis'
 monsieurbiz_menu:
     provider:
-        contact_page: 'Page de contact'
+        contact: 'Page de contact'
