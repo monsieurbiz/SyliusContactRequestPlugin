@@ -15,6 +15,7 @@ namespace MonsieurBiz\SyliusContactRequestPlugin\EmailManager;
 
 use Doctrine\ORM\EntityManagerInterface;
 use MonsieurBiz\SyliusContactRequestPlugin\Factory\ContactRequestFactoryInterface;
+use MonsieurBiz\SyliusSettingsPlugin\Provider\SettingsProviderInterface;
 use Sylius\Bundle\ShopBundle\EmailManager\ContactEmailManagerInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 
@@ -24,11 +25,17 @@ final class DecorateContactEmailManager implements ContactEmailManagerInterface
         private ContactEmailManagerInterface $decoratedContactEmailManager,
         private ContactRequestFactoryInterface $contactRequestFactory,
         private EntityManagerInterface $contactRequestManager,
+        private SettingsProviderInterface $settingProvider,
     ) {
     }
 
     public function sendContactRequest(array $data, array $recipients, ChannelInterface $channel = null, string $localeCode = null): void
     {
+        $settingRecipients = $this->getContactRequestEmailRecipients();
+        if (!empty($settingRecipients)) {
+            $recipients = $settingRecipients;
+        }
+
         $this->decoratedContactEmailManager->sendContactRequest($data, $recipients, $channel, $localeCode);
 
         if (null === $channel) {
@@ -38,5 +45,12 @@ final class DecorateContactEmailManager implements ContactEmailManagerInterface
         $contactRequest = $this->contactRequestFactory->createNewFromChannelAndData($channel, $data);
         $this->contactRequestManager->persist($contactRequest);
         $this->contactRequestManager->flush();
+    }
+
+    private function getContactRequestEmailRecipients(): array
+    {
+        $emailRecipients = $this->settingProvider->getSettingValue('monsieurbiz_contact_request.contact', 'email_recipients');
+
+        return array_unique(array_filter(array_map('trim', explode(',', (string) $emailRecipients))));
     }
 }

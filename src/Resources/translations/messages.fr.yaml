@@ -12,6 +12,8 @@ monsieurbiz:
             meta_keywords: "Meta Keyword"
             hide_sylius_default_content: "Masquer le contenu par défaut de Sylius"
             contact_page: 'Page de contact'
+            email_recipients: 'Destinataires des demandes de contact'
+            email_recipients_help: 'Séparés par une virgule'
         form:
             name: 'Nom'
             company: 'Entreprise'

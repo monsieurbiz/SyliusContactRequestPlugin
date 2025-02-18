@@ -48,6 +48,16 @@ final class ContactSettingsType extends AbstractSettingsType implements Settings
         );
         $this->addWithDefaultCheckbox(
             $builder,
+            'email_recipients',
+            TextType::class,
+            [
+                'label' => 'monsieurbiz.contact_request.ui.email_recipients',
+                'help' => 'monsieurbiz.contact_request.ui.email_recipients_help',
+                'required' => false,
+            ]
+        );
+        $this->addWithDefaultCheckbox(
+            $builder,
             'field_name_displayed',
             CheckboxType::class,
             [
