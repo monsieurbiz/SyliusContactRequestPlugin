@@ -14,6 +14,9 @@ monsieurbiz:
             contact_page: 'Page de contact'
             email_recipients: 'Destinataires des demandes de contact'
             email_recipients_help: 'Séparés par une virgule'
+            phone_number: 'Numéro de téléphone'
+            phone_number_help: 'Numéro de téléphone à afficher sur le site'
+            breadcrumbs_title: 'Titre pour le fil d''ariane'
         form:
             name: 'Nom'
             company: 'Entreprise'

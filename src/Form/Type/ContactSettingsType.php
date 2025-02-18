@@ -58,6 +58,16 @@ final class ContactSettingsType extends AbstractSettingsType implements Settings
         );
         $this->addWithDefaultCheckbox(
             $builder,
+            'phone_number',
+            TextType::class,
+            [
+                'label' => 'monsieurbiz.contact_request.ui.phone_number',
+                'help' => 'monsieurbiz.contact_request.ui.phone_number_help',
+                'required' => false,
+            ]
+        );
+        $this->addWithDefaultCheckbox(
+            $builder,
             'field_name_displayed',
             CheckboxType::class,
             [
@@ -107,6 +117,15 @@ final class ContactSettingsType extends AbstractSettingsType implements Settings
             CheckboxType::class,
             [
                 'label' => 'monsieurbiz.contact_request.settings.field_phone_number_required',
+                'required' => false,
+            ]
+        );
+        $this->addWithDefaultCheckbox(
+            $builder,
+            'breadcrumbs_title',
+            TextType::class,
+            [
+                'label' => 'monsieurbiz.contact_request.ui.breadcrumbs_title',
                 'required' => false,
             ]
         );

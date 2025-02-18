@@ -14,6 +14,9 @@ monsieurbiz:
             contact_page: 'Contact page'
             email_recipients: 'Contact request emails recipients'
             email_recipients_help: 'Separated by comma'
+            phone_number: 'Phone number'
+            phone_number_help: 'Phone number to display on website'
+            breadcrumbs_title: 'Title for breadcrumbs'
         form:
             name: 'Name'
             company: 'Company'
