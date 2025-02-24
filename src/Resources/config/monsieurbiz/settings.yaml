@@ -15,3 +15,4 @@ monsieurbiz_sylius_settings:
                 field_company_required: false
                 field_phone_number_displayed: true
                 field_phone_number_required: false
+                field_confirmation_displayed: false

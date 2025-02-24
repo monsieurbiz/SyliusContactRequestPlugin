@@ -17,6 +17,7 @@ use MonsieurBiz\SyliusRichEditorPlugin\Form\Type\RichEditorType;
 use MonsieurBiz\SyliusSettingsPlugin\Form\AbstractSettingsType;
 use MonsieurBiz\SyliusSettingsPlugin\Form\SettingsTypeInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -117,6 +118,24 @@ final class ContactSettingsType extends AbstractSettingsType implements Settings
             CheckboxType::class,
             [
                 'label' => 'monsieurbiz.contact_request.settings.field_phone_number_required',
+                'required' => false,
+            ]
+        );
+        $this->addWithDefaultCheckbox(
+            $builder,
+            'field_confirmation_displayed',
+            CheckboxType::class,
+            [
+                'label' => 'monsieurbiz.contact_request.settings.field_confirmation_displayed',
+                'required' => false,
+            ]
+        );
+        $this->addWithDefaultCheckbox(
+            $builder,
+            'field_confirmation_label',
+            TextareaType::class,
+            [
+                'label' => 'monsieurbiz.contact_request.settings.field_confirmation_label',
                 'required' => false,
             ]
         );

@@ -21,6 +21,7 @@ monsieurbiz:
             name: 'Name'
             company: 'Company'
             phone_number: 'Phone number'
+            confirmation_default_label: 'By using this form, you consent to our collection, use and disclosure of your personal information for purposes related to your request.'
         settings:
             plugin_name: 'Contact page'
             description: 'Configure the contact page'
@@ -30,6 +31,8 @@ monsieurbiz:
             field_company_required: 'The company field is required'
             field_phone_number_displayed: 'Display the phone field'
             field_phone_number_required: 'The phone field is required'
+            field_confirmation_displayed: 'Display the confirmation field'
+            field_confirmation_label : 'Confirmation field label'
 
 monsieurbiz_menu:
     provider:

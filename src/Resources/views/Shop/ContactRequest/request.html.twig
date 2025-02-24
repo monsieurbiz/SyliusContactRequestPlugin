@@ -60,6 +60,10 @@
 
                 {{ form_row(form.message, sylius_test_form_attribute('contact-message')) }}
 
+                {% if setting('monsieurbiz_contact_request.contact', 'field_confirmation_displayed')|default(false) %}
+                    {{ form_row(form.confirmation) }}
+                {% endif %}
+
                 {{ sylius_template_event('sylius.shop.contact.request.form', {'form': form}) }}
 
                 {{ form_row(form._token) }}

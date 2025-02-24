@@ -21,6 +21,7 @@ monsieurbiz:
             name: 'Nom'
             company: 'Entreprise'
             phone_number: 'Numéro de téléphone'
+            confirmation_default_label: 'En utilisant ce formulaire, vous acceptez à ce que nous recueillions, utilisions et divulguions vos renseignements personnels à des fins liées à votre demande.'
         settings:
             plugin_name: 'Page de contact'
             description: 'Configurer la page de contact'
@@ -30,6 +31,8 @@ monsieurbiz:
             field_company_required: 'Le champ entreprise est requis'
             field_phone_number_displayed: 'Afficher le champ téléphone'
             field_phone_number_required: 'Le champ téléphone est requis'
+            field_confirmation_displayed: 'Afficher le champ de confirmation de l''envoi'
+            field_confirmation_label : 'Libellé du champ de confirmation de l''envoi'
 monsieurbiz_menu:
     provider:
         contact: 'Page de contact'
