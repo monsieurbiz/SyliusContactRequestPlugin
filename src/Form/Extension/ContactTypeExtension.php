@@ -16,6 +16,7 @@ namespace MonsieurBiz\SyliusContactRequestPlugin\Form\Extension;
 use MonsieurBiz\SyliusSettingsPlugin\Provider\SettingsProviderInterface;
 use Sylius\Bundle\CoreBundle\Form\Type\ContactType;
 use Symfony\Component\Form\AbstractTypeExtension;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -28,6 +29,9 @@ final class ContactTypeExtension extends AbstractTypeExtension
     ) {
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         parent::buildForm($builder, $options);
@@ -62,6 +66,22 @@ final class ContactTypeExtension extends AbstractTypeExtension
                 'constraints' => $isPhoneNumberRequired ? $requiredConstraints : $defaultConstraints,
             ])
         ;
+
+        $isConfirmationFieldDisplayed = (bool) $this->settingProvider->getSettingValue('monsieurbiz_contact_request.contact', 'field_confirmation_displayed');
+        if ($isConfirmationFieldDisplayed) {
+            $confirmationFieldLabel = (string) $this->settingProvider->getSettingValue('monsieurbiz_contact_request.contact', 'field_confirmation_label');
+            $confirmationFieldLabel = empty($confirmationFieldLabel) ? 'monsieurbiz.contact_request.form.confirmation_default_label' : $confirmationFieldLabel;
+            $builder->add('confirmation', CheckboxType::class, [
+                'label' => $confirmationFieldLabel,
+                'label_html' => true,
+                'required' => true,
+                'constraints' => [
+                    new Assert\NotBlank([
+                        'message' => 'monsieurbiz.contact_request.confirmation_error',
+                    ]),
+                ],
+            ]);
+        }
     }
 
     public static function getExtendedTypes(): iterable

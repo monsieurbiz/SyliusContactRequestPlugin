@@ -1,0 +1,3 @@
+monsieurbiz:
+    contact_request:
+        confirmation_error: 'Vous devez donner approuver ce champ'
