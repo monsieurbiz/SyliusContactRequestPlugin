@@ -1,3 +1,10 @@
 monsieurbiz:
     contact_request:
         confirmation_error: 'You need to approve this field'
+        name:
+            not_blank: Please enter your name
+        company:
+            not_blank: Please enter your company name
+        phone_number:
+            invalid: Please enter a valid phone number
+            not_blank: Please enter your phone number

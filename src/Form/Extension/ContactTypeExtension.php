@@ -15,17 +15,21 @@ namespace MonsieurBiz\SyliusContactRequestPlugin\Form\Extension;
 
 use MonsieurBiz\SyliusSettingsPlugin\Provider\SettingsProviderInterface;
 use Sylius\Bundle\CoreBundle\Form\Type\ContactType;
+use Sylius\Component\Customer\Context\CustomerContextInterface;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Validator\Constraints as Assert;
 
 final class ContactTypeExtension extends AbstractTypeExtension
 {
     public function __construct(
         private SettingsProviderInterface $settingProvider,
+        private CustomerContextInterface $customerContext,
     ) {
     }
 
@@ -36,15 +40,6 @@ final class ContactTypeExtension extends AbstractTypeExtension
     {
         parent::buildForm($builder, $options);
 
-        $defaultConstraints = [
-            new Assert\Length(['max' => 255]),
-        ];
-
-        $requiredConstraints = [
-            new Assert\NotBlank(),
-            new Assert\Length(['max' => 255]),
-        ];
-
         $isNameRequired = $this->isFieldRequired('field_name_required', 'field_name_displayed');
         $isCompanyRequired = $this->isFieldRequired('field_company_required', 'field_company_displayed');
         $isPhoneNumberRequired = $this->isFieldRequired('field_phone_number_required', 'field_phone_number_displayed');
@@ -53,17 +48,18 @@ final class ContactTypeExtension extends AbstractTypeExtension
             ->add('name', TextType::class, [
                 'label' => 'monsieurbiz.contact_request.form.name',
                 'required' => $isNameRequired,
-                'constraints' => $isNameRequired ? $requiredConstraints : $defaultConstraints,
+                'constraints' => $this->getConstraints($isNameRequired, 'monsieurbiz.contact_request.name.not_blank'),
             ])
             ->add('company', TextType::class, [
                 'label' => 'monsieurbiz.contact_request.form.company',
                 'required' => $isCompanyRequired,
-                'constraints' => $isCompanyRequired ? $requiredConstraints : $defaultConstraints,
+                'constraints' => $this->getConstraints($isCompanyRequired, 'monsieurbiz.contact_request.company.not_blank'),
             ])
             ->add('phoneNumber', TelType::class, [
                 'label' => 'monsieurbiz.contact_request.form.phone_number',
+                'invalid_message' => 'monsieurbiz.contact_request.phone_number.invalid',
                 'required' => $isPhoneNumberRequired,
-                'constraints' => $isPhoneNumberRequired ? $requiredConstraints : $defaultConstraints,
+                'constraints' => $this->getConstraints($isPhoneNumberRequired, 'monsieurbiz.contact_request.phone_number.not_blank'),
             ])
         ;
 
@@ -82,6 +78,19 @@ final class ContactTypeExtension extends AbstractTypeExtension
                 ],
             ]);
         }
+
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event): void {
+            $name = $this->customerContext->getCustomer()?->getFullName();
+            if (null === $name) {
+                return;
+            }
+
+            /** @var array $data */
+            $data = $event->getData();
+            $data['name'] = $name;
+
+            $event->setData($data);
+        });
     }
 
     public static function getExtendedTypes(): iterable
@@ -95,5 +104,17 @@ final class ContactTypeExtension extends AbstractTypeExtension
     {
         return $this->settingProvider->getSettingValue('monsieurbiz_contact_request.contact', $path)
             && $this->settingProvider->getSettingValue('monsieurbiz_contact_request.contact', $pathDisplayed);
+    }
+
+    private function getConstraints(bool $isRequired, ?string $blankMessage): array
+    {
+        return $isRequired ? [
+            new Assert\NotBlank([
+                'message' => $blankMessage,
+            ]),
+            new Assert\Length(['max' => 255]),
+        ] : [
+            new Assert\Length(['max' => 255]),
+        ];
     }
 }
