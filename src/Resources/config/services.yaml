@@ -10,7 +10,7 @@ services:
 
     # Save contact request entity
     MonsieurBiz\SyliusContactRequestPlugin\EmailManager\DecorateContactEmailManager:
-        decorates: 'sylius.email_manager.contact'
+        decorates: 'sylius.mailer.contact_email_manager.shop'
         arguments: [ '@.inner' ]
 
     # Add admin menu
