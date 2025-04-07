@@ -1,3 +1,10 @@
 monsieurbiz:
     contact_request:
         confirmation_error: 'Vous devez approuver ce champ'
+        name:
+            not_blank: Veuillez entrer votre nom
+        company:
+            not_blank: Veuillez entrer le nom de votre société
+        phone_number:
+            invalid: Veuillez entrer un numéro de téléphone valide
+            not_blank: Veuillez entrer votre numéro de téléphone

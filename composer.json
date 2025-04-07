@@ -6,7 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
-        "sylius/sylius": ">=1.12 <2.0",
+        "sylius/sylius": ">=1.13 <2.0",
         "monsieurbiz/sylius-settings-plugin": "^1.2.0",
         "monsieurbiz/sylius-rich-editor-plugin": "^2.8.0"
     },

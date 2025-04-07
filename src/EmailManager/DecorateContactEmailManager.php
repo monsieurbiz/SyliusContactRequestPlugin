@@ -16,17 +16,27 @@ namespace MonsieurBiz\SyliusContactRequestPlugin\EmailManager;
 use Doctrine\ORM\EntityManagerInterface;
 use MonsieurBiz\SyliusContactRequestPlugin\Factory\ContactRequestFactoryInterface;
 use MonsieurBiz\SyliusSettingsPlugin\Provider\SettingsProviderInterface;
-use Sylius\Bundle\ShopBundle\EmailManager\ContactEmailManagerInterface;
+use Sylius\Bundle\CoreBundle\Mailer\ContactEmailManagerInterface;
+use Sylius\Bundle\ShopBundle\EmailManager\ContactEmailManagerInterface as OldContactEmailManagerInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 
 final class DecorateContactEmailManager implements ContactEmailManagerInterface
 {
     public function __construct(
-        private ContactEmailManagerInterface $decoratedContactEmailManager,
+        private OldContactEmailManagerInterface|ContactEmailManagerInterface $decoratedContactEmailManager,
         private ContactRequestFactoryInterface $contactRequestFactory,
         private EntityManagerInterface $contactRequestManager,
         private SettingsProviderInterface $settingProvider,
     ) {
+        if ($this->decoratedContactEmailManager instanceof OldContactEmailManagerInterface) {
+            trigger_deprecation(
+                'sylius/shop-bundle',
+                '1.13',
+                'The "%s" interface is deprecated, use "%s" instead.',
+                OldContactEmailManagerInterface::class,
+                ContactEmailManagerInterface::class,
+            );
+        }
     }
 
     public function sendContactRequest(array $data, array $recipients, ChannelInterface $channel = null, string $localeCode = null): void
