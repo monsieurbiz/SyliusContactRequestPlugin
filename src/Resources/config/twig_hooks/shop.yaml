@@ -1,0 +1,41 @@
+sylius_twig_hooks:
+    hooks:
+        'monsieurbiz.contact.contact_request#metatags':
+            contact_request:
+                template: '@MonsieurBizSyliusContactRequestPlugin/shop/contact/contact_request/metatags.html.twig'
+                priority: 0
+
+        'sylius_shop.contact.contact_request':
+            breadcrumb:
+                template: '@MonsieurBizSyliusContactRequestPlugin/shop/contact/contact_request/breadcrumb.html.twig'
+                priority: 200
+
+        'sylius_shop.contact.contact_request.content':
+            header:
+                template: '@MonsieurBizSyliusContactRequestPlugin/shop/contact/contact_request/content/header.html.twig'
+                priority: 100
+            before_form:
+                template: '@MonsieurBizSyliusContactRequestPlugin/shop/contact/contact_request/content/before_form.html.twig'
+                priority: 50
+            after_form:
+                template: '@MonsieurBizSyliusContactRequestPlugin/shop/contact/contact_request/content/after_form.html.twig'
+                priority: -50
+
+        'sylius_shop.contact.contact_request.content.default_header':
+            header:
+                template: '@SyliusShop/contact/contact_request/content/header.html.twig'
+                priority: 100
+
+        'sylius_shop.contact.contact_request.content.form':
+            name:
+                template: '@MonsieurBizSyliusContactRequestPlugin/shop/contact/contact_request/content/form/name.html.twig'
+                priority: 150
+            company:
+                template: '@MonsieurBizSyliusContactRequestPlugin/shop/contact/contact_request/content/form/company.html.twig'
+                priority: 140
+            phone_number:
+                template: '@MonsieurBizSyliusContactRequestPlugin/shop/contact/contact_request/content/form/phone_number.html.twig'
+                priority: 130
+            confirmation:
+                template: '@MonsieurBizSyliusContactRequestPlugin/shop/contact/contact_request/content/form/confirmation.html.twig'
+                priority: 50

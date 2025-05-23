@@ -1,0 +1,6 @@
+{% set contentBeforeForm = setting('monsieurbiz_contact_request.contact', 'content_before_form')|default('') %}
+{% if contentBeforeForm is not empty %}
+    <div class="mb-5">
+        {{ contentBeforeForm|monsieurbiz_richeditor_render_field }}
+    </div>
+{% endif %}

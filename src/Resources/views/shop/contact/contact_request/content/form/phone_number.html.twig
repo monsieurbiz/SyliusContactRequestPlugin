@@ -1,0 +1,5 @@
+{% set form = hookable_metadata.context.form %}
+
+{% if setting('monsieurbiz_contact_request.contact', 'field_phone_number_displayed')|default(false) %}
+    {{ form_row(form.phoneNumber, sylius_test_form_attribute('contact-phone-number')) }}
+{% endif %}

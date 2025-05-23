@@ -1,0 +1,14 @@
+{% from '@SyliusShop/shared/breadcrumbs.html.twig' import breadcrumbs as breadcrumbs %}
+
+{% set breadcrumbsTitle = setting('monsieurbiz_contact_request.contact', 'breadcrumbs_title')|default('') %}
+
+{% if breadcrumbsTitle is not empty %}
+    <div class="container mt-4 mb-5">
+        <div class="col-12">
+            {{ breadcrumbs([
+                { label: 'sylius.ui.home'|trans, path: path('sylius_shop_homepage')},
+                { label: breadcrumbsTitle, active: true}
+            ]) }}
+        </div>
+    </div>
+{% endif %}

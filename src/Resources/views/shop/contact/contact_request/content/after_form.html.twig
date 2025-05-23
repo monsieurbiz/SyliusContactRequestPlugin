@@ -1,0 +1,6 @@
+{% set contentAfterForm = setting('monsieurbiz_contact_request.contact', 'content_after_form')|default('') %}
+{% if contentAfterForm is not empty %}
+    <div class="mt-5">
+        {{ contentAfterForm|monsieurbiz_richeditor_render_field }}
+    </div>
+{% endif %}
