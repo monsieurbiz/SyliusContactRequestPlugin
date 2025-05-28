@@ -33,6 +33,10 @@ monsieurbiz:
             field_phone_number_required: 'Le champ téléphone est requis'
             field_confirmation_displayed: 'Afficher le champ de confirmation de l''envoi'
             field_confirmation_label : 'Libellé du champ de confirmation de l''envoi'
+monsieurbiz_contact_request:
+    ui:
+        contact_requests: 'Demandes de contact'
+        contact_request: 'Demande de contact'
 monsieurbiz_menu:
     provider:
         contact: 'Page de contact'

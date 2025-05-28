@@ -33,7 +33,10 @@ monsieurbiz:
             field_phone_number_required: 'The phone field is required'
             field_confirmation_displayed: 'Display the confirmation field'
             field_confirmation_label : 'Confirmation field label'
-
+monsieurbiz_contact_request:
+    ui:
+        contact_requests: 'Contact requests'
+        contact_request: 'Contact request'
 monsieurbiz_menu:
     provider:
         contact: 'Contact page'
