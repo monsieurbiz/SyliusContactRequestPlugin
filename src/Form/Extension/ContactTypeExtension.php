@@ -46,18 +46,18 @@ final class ContactTypeExtension extends AbstractTypeExtension
 
         $builder
             ->add('name', TextType::class, [
-                'label' => 'monsieurbiz.contact_request.form.name',
+                'label' => 'monsieurbiz_contact_request.form.name',
                 'required' => $isNameRequired,
                 'constraints' => $this->getConstraints($isNameRequired, 'monsieurbiz.contact_request.name.not_blank'),
             ])
             ->add('company', TextType::class, [
-                'label' => 'monsieurbiz.contact_request.form.company',
+                'label' => 'monsieurbiz_contact_request.form.company',
                 'required' => $isCompanyRequired,
                 'constraints' => $this->getConstraints($isCompanyRequired, 'monsieurbiz.contact_request.company.not_blank'),
             ])
             ->add('phoneNumber', TelType::class, [
-                'label' => 'monsieurbiz.contact_request.form.phone_number',
-                'invalid_message' => 'monsieurbiz.contact_request.phone_number.invalid',
+                'label' => 'monsieurbiz_contact_request.form.phone_number',
+                'invalid_message' => 'monsieurbiz_contact_request.phone_number.invalid',
                 'required' => $isPhoneNumberRequired,
                 'constraints' => $this->getConstraints($isPhoneNumberRequired, 'monsieurbiz.contact_request.phone_number.not_blank'),
             ])
@@ -66,14 +66,14 @@ final class ContactTypeExtension extends AbstractTypeExtension
         $isConfirmationFieldDisplayed = (bool) $this->settingProvider->getSettingValue('monsieurbiz_contact_request.contact', 'field_confirmation_displayed');
         if ($isConfirmationFieldDisplayed) {
             $confirmationFieldLabel = (string) $this->settingProvider->getSettingValue('monsieurbiz_contact_request.contact', 'field_confirmation_label');
-            $confirmationFieldLabel = empty($confirmationFieldLabel) ? 'monsieurbiz.contact_request.form.confirmation_default_label' : $confirmationFieldLabel;
+            $confirmationFieldLabel = empty($confirmationFieldLabel) ? 'monsieurbiz_contact_request.form.confirmation_default_label' : $confirmationFieldLabel;
             $builder->add('confirmation', CheckboxType::class, [
                 'label' => $confirmationFieldLabel,
                 'label_html' => true,
                 'required' => true,
                 'constraints' => [
                     new Assert\NotBlank([
-                        'message' => 'monsieurbiz.contact_request.confirmation_error',
+                        'message' => 'monsieurbiz_contact_request.confirmation_error',
                     ]),
                 ],
             ]);

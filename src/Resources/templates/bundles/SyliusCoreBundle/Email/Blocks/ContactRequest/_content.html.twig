@@ -6,7 +6,7 @@
 
     {% if data.name|default('') is not empty %}
         <div style="color: #1abb9c;">
-            <strong>{{ 'monsieurbiz.contact_request.form.name'|trans({}, null, localeCode) }}:</strong>
+            <strong>{{ 'monsieurbiz_contact_request.form.name'|trans({}, null, localeCode) }}:</strong>
         </div>
         <div style="margin-bottom: 20px;">{{ data.name|default('') }}</div>
 
@@ -14,14 +14,14 @@
 
     {% if data.company|default('') is not empty %}
         <div style="color: #1abb9c;">
-            <strong>{{ 'monsieurbiz.contact_request.form.company'|trans({}, null, localeCode) }}:</strong>
+            <strong>{{ 'monsieurbiz_contact_request.form.company'|trans({}, null, localeCode) }}:</strong>
         </div>
         <div style="margin-bottom: 20px;">{{ data.company|default('') }}</div>
     {% endif %}
 
     {% if data.phoneNumber|default('') is not empty %}
         <div style="color: #1abb9c;">
-            <strong>{{ 'monsieurbiz.contact_request.form.phone_number'|trans({}, null, localeCode) }}:</strong>
+            <strong>{{ 'monsieurbiz_contact_request.form.phone_number'|trans({}, null, localeCode) }}:</strong>
         </div>
         <div style="margin-bottom: 20px;">{{ data.phoneNumber|default('') }}</div>
     {% endif %}
