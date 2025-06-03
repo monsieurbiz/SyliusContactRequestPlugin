@@ -4,7 +4,7 @@ monsieurbiz_sylius_settings:
             vendor_name: Monsieur Biz
             plugin_name: monsieurbiz_contact_request.settings.plugin_name
             description: monsieurbiz_contact_request.settings.description
-            icon: envelope outline
+            icon: tabler:mail
             use_locales: true
             classes:
                 form: MonsieurBiz\SyliusContactRequestPlugin\Form\Type\ContactSettingsType
