@@ -81,10 +81,10 @@ sylius_shop_contact_request:
         _locale: ^[A-Za-z]{2,4}(_([A-Za-z]{4}|[0-9]{3}))?(_([A-Za-z]{2}|[0-9]{3}))?$
     methods: [GET, POST]
     defaults:
-        _controller: sylius.controller.shop.contact::requestAction
+        _controller: sylius_shop.controller.contact::requestAction
         _sylius:
             redirect: sylius_shop_homepage
-            template: '@MonsieurBizSyliusContactRequestPlugin/Shop/ContactRequest/request.html.twig'
+            template: '@MonsieurBizSyliusContactRequestPlugin/shop/contact/contact_request.html.twig'
 ```
 
 This is the same as Sylius route configuration instead of the template key which is overridden to use the plugin template.
