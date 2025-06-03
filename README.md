@@ -89,6 +89,14 @@ sylius_shop_contact_request:
 
 This is the same as Sylius route configuration instead of the template key which is overridden to use the plugin template.
 
+Copy the override template in your template directory to display name, company and phone number in the contact email:
+
+```bash
+cp -Rv vendor/monsieurbiz/sylius-contact-request-plugin/src/Resources/templates/* templates/
+```
+
+Then you can customize the template as you want.
+
 ## Contributing
 
 You can find a way to run the plugin without effort in the file [DEVELOPMENT.md](./DEVELOPMENT.md).
