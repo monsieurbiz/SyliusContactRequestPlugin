@@ -61,13 +61,14 @@ jobs:
       - name: Make sure to install the required version of Sylius
         working-directory: ./sylius
         run: |
-            composer require --no-install --no-scripts --no-progress sylius/sylius="${{ matrix.sylius }}"
+            composer require --no-install --no-scripts --no-progress --no-update sylius/sylius="${{ matrix.sylius }}"
 
       - name: Setup some requirements
         working-directory: ./sylius
         run: |
             composer config --no-plugins allow-plugins true
             composer config --no-plugins extra.symfony.allow-contrib true
+            composer config --no-plugins extra.symfony.require "7.2.*"
             composer config --no-plugins secure-http false
             composer config --no-plugins --unset platform.php
             composer config --no-plugins extra.symfony.docker false
