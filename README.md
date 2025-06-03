@@ -14,10 +14,12 @@ This plugin allows you to customize the contact page on the front-end of your Sy
 
 ## Compatibility
 
-| Sylius Version | PHP Version     |
-|----------------|-----------------|
-| 1.13           | 8.1 - 8.2 - 8.3 |
-| 1.14           | 8.1 - 8.2 - 8.3 |
+| Sylius Version | PHP Version |
+|----------------|-------------|
+| 2.0            | 8.2 - 8.3   |
+
+
+ℹ️ For Sylius 1.x, see our [1.x branch](https://github.com/monsieurbiz/SyliusContactRequestPlugin/tree/1.x) and all 1.x releases.
 
 ## Installation
 
