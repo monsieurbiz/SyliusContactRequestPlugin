@@ -48,18 +48,18 @@ final class ContactTypeExtension extends AbstractTypeExtension
             ->add('name', TextType::class, [
                 'label' => 'monsieurbiz_contact_request.form.name',
                 'required' => $isNameRequired,
-                'constraints' => $this->getConstraints($isNameRequired, 'monsieurbiz.contact_request.name.not_blank'),
+                'constraints' => $this->getConstraints($isNameRequired, 'monsieurbiz_contact_request.contact.name.not_blank'),
             ])
             ->add('company', TextType::class, [
                 'label' => 'monsieurbiz_contact_request.form.company',
                 'required' => $isCompanyRequired,
-                'constraints' => $this->getConstraints($isCompanyRequired, 'monsieurbiz.contact_request.company.not_blank'),
+                'constraints' => $this->getConstraints($isCompanyRequired, 'monsieurbiz_contact_request.contact.company.not_blank'),
             ])
             ->add('phoneNumber', TelType::class, [
                 'label' => 'monsieurbiz_contact_request.form.phone_number',
-                'invalid_message' => 'monsieurbiz_contact_request.phone_number.invalid',
+                'invalid_message' => 'monsieurbiz_contact_request.contact.phone_number.invalid',
                 'required' => $isPhoneNumberRequired,
-                'constraints' => $this->getConstraints($isPhoneNumberRequired, 'monsieurbiz.contact_request.phone_number.not_blank'),
+                'constraints' => $this->getConstraints($isPhoneNumberRequired, 'monsieurbiz_contact_request.contact.phone_number.not_blank'),
             ])
         ;
 
@@ -73,7 +73,7 @@ final class ContactTypeExtension extends AbstractTypeExtension
                 'required' => true,
                 'constraints' => [
                     new Assert\NotBlank([
-                        'message' => 'monsieurbiz_contact_request.confirmation_error',
+                        'message' => 'monsieurbiz_contact_request.contact.confirmation_error',
                     ]),
                 ],
             ]);

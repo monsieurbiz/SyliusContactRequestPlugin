@@ -1,5 +1,5 @@
-monsieurbiz:
-    contact_request:
+monsieurbiz_contact_request:
+    contact:
         confirmation_error: 'You need to approve this field'
         name:
             not_blank: Please enter your name
