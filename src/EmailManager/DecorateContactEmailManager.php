@@ -29,7 +29,7 @@ final class DecorateContactEmailManager implements ContactEmailManagerInterface
     ) {
     }
 
-    public function sendContactRequest(array $data, array $recipients, ChannelInterface $channel = null, string $localeCode = null): void
+    public function sendContactRequest(array $data, array $recipients, ChannelInterface $channel, string $localeCode): void
     {
         $settingRecipients = $this->getContactRequestEmailRecipients();
         if (!empty($settingRecipients)) {
@@ -37,10 +37,6 @@ final class DecorateContactEmailManager implements ContactEmailManagerInterface
         }
 
         $this->decoratedContactEmailManager->sendContactRequest($data, $recipients, $channel, $localeCode);
-
-        if (null === $channel) {
-            return;
-        }
 
         $contactRequest = $this->contactRequestFactory->createNewFromChannelAndData($channel, $data);
         $this->contactRequestManager->persist($contactRequest);
