@@ -34,7 +34,7 @@ final class ContactSettingsType extends AbstractSettingsType implements Settings
             'content_before_form',
             RichEditorType::class,
             [
-                'label' => 'monsieurbiz.contact_request.ui.content_before_form',
+                'label' => 'monsieurbiz_contact_request.ui.content_before_form',
                 'required' => false,
             ]
         );
@@ -43,7 +43,7 @@ final class ContactSettingsType extends AbstractSettingsType implements Settings
             'content_after_form',
             RichEditorType::class,
             [
-                'label' => 'monsieurbiz.contact_request.ui.content_after_form',
+                'label' => 'monsieurbiz_contact_request.ui.content_after_form',
                 'required' => false,
             ]
         );
@@ -52,8 +52,8 @@ final class ContactSettingsType extends AbstractSettingsType implements Settings
             'email_recipients',
             TextType::class,
             [
-                'label' => 'monsieurbiz.contact_request.ui.email_recipients',
-                'help' => 'monsieurbiz.contact_request.ui.email_recipients_help',
+                'label' => 'monsieurbiz_contact_request.ui.email_recipients',
+                'help' => 'monsieurbiz_contact_request.ui.email_recipients_help',
                 'required' => false,
             ]
         );
@@ -62,8 +62,8 @@ final class ContactSettingsType extends AbstractSettingsType implements Settings
             'phone_number',
             TextType::class,
             [
-                'label' => 'monsieurbiz.contact_request.ui.phone_number',
-                'help' => 'monsieurbiz.contact_request.ui.phone_number_help',
+                'label' => 'monsieurbiz_contact_request.ui.phone_number',
+                'help' => 'monsieurbiz_contact_request.ui.phone_number_help',
                 'required' => false,
             ]
         );
@@ -72,7 +72,7 @@ final class ContactSettingsType extends AbstractSettingsType implements Settings
             'field_name_displayed',
             CheckboxType::class,
             [
-                'label' => 'monsieurbiz.contact_request.settings.field_name_displayed',
+                'label' => 'monsieurbiz_contact_request.settings.field_name_displayed',
                 'required' => false,
             ]
         );
@@ -81,7 +81,7 @@ final class ContactSettingsType extends AbstractSettingsType implements Settings
             'field_name_required',
             CheckboxType::class,
             [
-                'label' => 'monsieurbiz.contact_request.settings.field_name_required',
+                'label' => 'monsieurbiz_contact_request.settings.field_name_required',
                 'required' => false,
             ]
         );
@@ -90,7 +90,7 @@ final class ContactSettingsType extends AbstractSettingsType implements Settings
             'field_company_displayed',
             CheckboxType::class,
             [
-                'label' => 'monsieurbiz.contact_request.settings.field_company_displayed',
+                'label' => 'monsieurbiz_contact_request.settings.field_company_displayed',
                 'required' => false,
             ]
         );
@@ -99,7 +99,7 @@ final class ContactSettingsType extends AbstractSettingsType implements Settings
             'field_company_required',
             CheckboxType::class,
             [
-                'label' => 'monsieurbiz.contact_request.settings.field_company_required',
+                'label' => 'monsieurbiz_contact_request.settings.field_company_required',
                 'required' => false,
             ]
         );
@@ -108,7 +108,7 @@ final class ContactSettingsType extends AbstractSettingsType implements Settings
             'field_phone_number_displayed',
             CheckboxType::class,
             [
-                'label' => 'monsieurbiz.contact_request.settings.field_phone_number_displayed',
+                'label' => 'monsieurbiz_contact_request.settings.field_phone_number_displayed',
                 'required' => false,
             ]
         );
@@ -117,7 +117,7 @@ final class ContactSettingsType extends AbstractSettingsType implements Settings
             'field_phone_number_required',
             CheckboxType::class,
             [
-                'label' => 'monsieurbiz.contact_request.settings.field_phone_number_required',
+                'label' => 'monsieurbiz_contact_request.settings.field_phone_number_required',
                 'required' => false,
             ]
         );
@@ -126,7 +126,7 @@ final class ContactSettingsType extends AbstractSettingsType implements Settings
             'field_confirmation_displayed',
             CheckboxType::class,
             [
-                'label' => 'monsieurbiz.contact_request.settings.field_confirmation_displayed',
+                'label' => 'monsieurbiz_contact_request.settings.field_confirmation_displayed',
                 'required' => false,
             ]
         );
@@ -135,7 +135,7 @@ final class ContactSettingsType extends AbstractSettingsType implements Settings
             'field_confirmation_label',
             TextareaType::class,
             [
-                'label' => 'monsieurbiz.contact_request.settings.field_confirmation_label',
+                'label' => 'monsieurbiz_contact_request.settings.field_confirmation_label',
                 'required' => false,
             ]
         );
@@ -144,7 +144,7 @@ final class ContactSettingsType extends AbstractSettingsType implements Settings
             'breadcrumbs_title',
             TextType::class,
             [
-                'label' => 'monsieurbiz.contact_request.ui.breadcrumbs_title',
+                'label' => 'monsieurbiz_contact_request.ui.breadcrumbs_title',
                 'required' => false,
             ]
         );
@@ -153,7 +153,7 @@ final class ContactSettingsType extends AbstractSettingsType implements Settings
             'meta_title',
             TextType::class,
             [
-                'label' => 'monsieurbiz.contact_request.ui.meta_title',
+                'label' => 'monsieurbiz_contact_request.ui.meta_title',
                 'required' => false,
             ]
         );
@@ -162,7 +162,7 @@ final class ContactSettingsType extends AbstractSettingsType implements Settings
             'meta_description',
             TextType::class,
             [
-                'label' => 'monsieurbiz.contact_request.ui.meta_description',
+                'label' => 'monsieurbiz_contact_request.ui.meta_description',
                 'required' => false,
             ]
         );
@@ -171,7 +171,7 @@ final class ContactSettingsType extends AbstractSettingsType implements Settings
             'meta_keywords',
             TextType::class,
             [
-                'label' => 'monsieurbiz.contact_request.ui.meta_keywords',
+                'label' => 'monsieurbiz_contact_request.ui.meta_keywords',
                 'required' => false,
             ]
         );
@@ -180,7 +180,7 @@ final class ContactSettingsType extends AbstractSettingsType implements Settings
             'hide_sylius_default_content',
             CheckboxType::class,
             [
-                'label' => 'monsieurbiz.contact_request.ui.hide_sylius_default_content',
+                'label' => 'monsieurbiz_contact_request.ui.hide_sylius_default_content',
                 'required' => false,
             ]
         );

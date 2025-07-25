@@ -1,0 +1,7 @@
+{% set resource = hookable_metadata.context.resource %}
+<div class="row">
+    <div class="col-12 col-md-4 fw-bold">{{ 'monsieurbiz_contact_request.ui.message'|trans }}</div>
+    <div class="col-12 col-md-8">
+        {{ resource.message|default('')|nl2br }}
+    </div>
+</div>

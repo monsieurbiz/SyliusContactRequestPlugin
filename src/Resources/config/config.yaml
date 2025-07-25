@@ -2,3 +2,4 @@ imports:
     - { resource: 'resources.yaml' }
     - { resource: 'grids/*' }
     - { resource: 'monsieurbiz/*.yaml' }
+    - { resource: 'twig_hooks/**/*.yaml' }

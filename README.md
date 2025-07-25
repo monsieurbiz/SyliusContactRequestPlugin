@@ -14,10 +14,12 @@ This plugin allows you to customize the contact page on the front-end of your Sy
 
 ## Compatibility
 
-| Sylius Version | PHP Version     |
-|----------------|-----------------|
-| 1.13           | 8.1 - 8.2 - 8.3 |
-| 1.14           | 8.1 - 8.2 - 8.3 |
+| Sylius Version | PHP Version |
+|----------------|-------------|
+| 2.0, 2.1       | 8.2 - 8.3   |
+
+
+ℹ️ For Sylius 1.x, see our [1.x branch](https://github.com/monsieurbiz/SyliusContactRequestPlugin/tree/1.x) and all 1.x releases.
 
 ## Installation
 
@@ -79,13 +81,21 @@ sylius_shop_contact_request:
         _locale: ^[A-Za-z]{2,4}(_([A-Za-z]{4}|[0-9]{3}))?(_([A-Za-z]{2}|[0-9]{3}))?$
     methods: [GET, POST]
     defaults:
-        _controller: sylius.controller.shop.contact::requestAction
+        _controller: sylius_shop.controller.contact::requestAction
         _sylius:
             redirect: sylius_shop_homepage
-            template: '@MonsieurBizSyliusContactRequestPlugin/Shop/ContactRequest/request.html.twig'
+            template: '@MonsieurBizSyliusContactRequestPlugin/shop/contact/contact_request.html.twig'
 ```
 
 This is the same as Sylius route configuration instead of the template key which is overridden to use the plugin template.
+
+Copy the override template in your template directory to display name, company and phone number in the contact email:
+
+```bash
+cp -Rv vendor/monsieurbiz/sylius-contact-request-plugin/src/Resources/templates/* templates/
+```
+
+Then you can customize the template as you want.
 
 ## Contributing
 

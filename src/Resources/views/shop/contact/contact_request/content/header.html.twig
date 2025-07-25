@@ -1,0 +1,5 @@
+{% set hideSyliusDefaultContent = setting('monsieurbiz_contact_request.contact', 'hide_sylius_default_content')|default(false) %}
+
+{% if not hideSyliusDefaultContent %}
+    {% hook 'default_header' %}
+{% endif %}

@@ -1,0 +1,5 @@
+{% set form = hookable_metadata.context.form %}
+
+{% if setting('monsieurbiz_contact_request.contact', 'field_name_displayed')|default(false) %}
+    {{ form_row(form.name, sylius_test_form_attribute('contact-name')) }}
+{% endif %}

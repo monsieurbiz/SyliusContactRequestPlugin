@@ -1,0 +1,7 @@
+{% extends '@SyliusShop/contact/contact_request.html.twig' %}
+
+{% set prefixes = ['monsieurbiz.contact.contact_request'] %}
+
+{% set metaTitle = setting('monsieurbiz_contact_request.contact', 'meta_title')|default('') %}
+
+{% block title %}{{ metaTitle is not empty ? metaTitle : (('sylius.ui.contact_us'|trans) ~ ' | ' ~ parent()) }}{% endblock %}

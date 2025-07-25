@@ -17,29 +17,19 @@ use Doctrine\ORM\EntityManagerInterface;
 use MonsieurBiz\SyliusContactRequestPlugin\Factory\ContactRequestFactoryInterface;
 use MonsieurBiz\SyliusSettingsPlugin\Provider\SettingsProviderInterface;
 use Sylius\Bundle\CoreBundle\Mailer\ContactEmailManagerInterface;
-use Sylius\Bundle\ShopBundle\EmailManager\ContactEmailManagerInterface as OldContactEmailManagerInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 
 final class DecorateContactEmailManager implements ContactEmailManagerInterface
 {
     public function __construct(
-        private OldContactEmailManagerInterface|ContactEmailManagerInterface $decoratedContactEmailManager,
+        private ContactEmailManagerInterface $decoratedContactEmailManager,
         private ContactRequestFactoryInterface $contactRequestFactory,
         private EntityManagerInterface $contactRequestManager,
         private SettingsProviderInterface $settingProvider,
     ) {
-        if ($this->decoratedContactEmailManager instanceof OldContactEmailManagerInterface) {
-            trigger_deprecation(
-                'sylius/shop-bundle',
-                '1.13',
-                'The "%s" interface is deprecated, use "%s" instead.',
-                OldContactEmailManagerInterface::class,
-                ContactEmailManagerInterface::class,
-            );
-        }
     }
 
-    public function sendContactRequest(array $data, array $recipients, ChannelInterface $channel = null, string $localeCode = null): void
+    public function sendContactRequest(array $data, array $recipients, ChannelInterface $channel, string $localeCode): void
     {
         $settingRecipients = $this->getContactRequestEmailRecipients();
         if (!empty($settingRecipients)) {
@@ -47,10 +37,6 @@ final class DecorateContactEmailManager implements ContactEmailManagerInterface
         }
 
         $this->decoratedContactEmailManager->sendContactRequest($data, $recipients, $channel, $localeCode);
-
-        if (null === $channel) {
-            return;
-        }
 
         $contactRequest = $this->contactRequestFactory->createNewFromChannelAndData($channel, $data);
         $this->contactRequestManager->persist($contactRequest);

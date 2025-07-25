@@ -24,7 +24,7 @@ final class AdminMenuListener
         $customerMenu = $menu->getChild('customers');
 
         $customerMenu?->addChild('monsieurbiz-contact-request', ['route' => 'monsieurbiz_contact_request_admin_contact_request_index'])
-            ->setLabel('monsieurbiz.contact_request.ui.contact_requests')
+            ->setLabel('monsieurbiz_contact_request.ui.contact_requests')
             ->setLabelAttribute('icon', 'phone')
         ;
     }

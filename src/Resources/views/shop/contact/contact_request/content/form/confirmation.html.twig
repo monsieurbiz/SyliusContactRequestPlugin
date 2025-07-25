@@ -1,0 +1,7 @@
+{% set form = hookable_metadata.context.form %}
+
+{% if setting('monsieurbiz_contact_request.contact', 'field_confirmation_displayed')|default(false) %}
+    <div class="mb-3">
+        {{ form_row(form.confirmation, sylius_test_form_attribute('contact-confirmation')) }}
+    </div>
+{% endif %}

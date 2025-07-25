@@ -31,7 +31,7 @@ sylius_grid:
                     type: twig
                     label: sylius.ui.channel
                     options:
-                        template: "@SyliusAdmin/Channel/Grid/Field/name.html.twig"
+                        template: "@SyliusAdmin/shared/grid/field/channel.html.twig"
                 createdAt:
                     label: sylius.ui.created_at
                     type: datetime

@@ -41,7 +41,7 @@ class ContactUrlProvider extends AbstractUrlProvider
     {
         return [
             (object) [
-                'title' => $this->translator->trans('monsieurbiz.contact_request.ui.contact_page', [], 'messages', $locale),
+                'title' => $this->translator->trans('monsieurbiz_contact_request.ui.contact_page', [], 'messages', $locale),
             ],
         ];
     }

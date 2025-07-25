@@ -1,0 +1,28 @@
+sylius_twig_hooks:
+    hooks:
+        'sylius_admin.contact_request.show.content':
+            page_body:
+                template: '@MonsieurBizSyliusContactRequestPlugin/admin/contact_request/show/content/page_body.html.twig'
+                priority: 0
+
+        'sylius_admin.contact_request.show.content.page_body':
+            general:
+                template: '@MonsieurBizSyliusContactRequestPlugin/admin/contact_request/show/content/page_body/general.html.twig'
+                priority: 0
+
+        'sylius_admin.contact_request.show.content.page_body.general':
+            email:
+                template: '@MonsieurBizSyliusContactRequestPlugin/admin/contact_request/show/content/page_body/general/email.html.twig'
+                priority: 100
+            name:
+                template: '@MonsieurBizSyliusContactRequestPlugin/admin/contact_request/show/content/page_body/general/name.html.twig'
+                priority: 90
+            company:
+                template: '@MonsieurBizSyliusContactRequestPlugin/admin/contact_request/show/content/page_body/general/company.html.twig'
+                priority: 80
+            phone_number:
+                template: '@MonsieurBizSyliusContactRequestPlugin/admin/contact_request/show/content/page_body/general/phone_number.html.twig'
+                priority: 70
+            message:
+                template: '@MonsieurBizSyliusContactRequestPlugin/admin/contact_request/show/content/page_body/general/message.html.twig'
+                priority: 60
