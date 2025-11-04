@@ -1,0 +1,10 @@
+monsieurbiz_contact_request:
+    contact:
+        confirmation_error: 'Sie müssen dieses Feld bestätigen'
+        name:
+            not_blank: 'Bitte geben Sie Ihren Namen ein'
+        company:
+            not_blank: 'Bitte geben Sie Ihren Unternehmensnamen ein'
+        phone_number:
+            invalid: 'Bitte geben Sie eine gültige Telefonnummer ein'
+            not_blank: 'Bitte geben Sie Ihre Telefonnummer ein'
