@@ -1,0 +1,38 @@
+monsieurbiz_contact_request:
+    ui:
+        contact_requests: 'Kontaktanfragen'
+        contact_request: 'Kontaktanfrage'
+        email: 'E-Mail'
+        message: 'Nachricht'
+        content_before_form: 'Inhalt vor dem Kontaktformular'
+        content_after_form: 'Inhalt nach dem Kontaktformular'
+        meta_title: 'Meta-Titel'
+        meta_description: 'Meta-Beschreibung'
+        meta_keywords: 'Meta-Schlüsselwörter'
+        hide_sylius_default_content: 'Standardinhalt von Sylius ausblenden'
+        contact_page: 'Kontaktseite'
+        email_recipients: 'Empfänger der Kontaktanfragen'
+        email_recipients_help: 'Durch Kommas getrennt'
+        phone_number: 'Telefonnummer'
+        phone_number_help: 'Telefonnummer, die auf der Website angezeigt wird'
+        breadcrumbs_title: 'Titel für die Brotkrumen-Navigation'
+    form:
+        name: 'Name'
+        company: 'Unternehmen'
+        phone_number: 'Telefonnummer'
+        confirmation_default_label: 'Durch die Nutzung dieses Formulars erklären Sie sich mit der Erhebung, Nutzung und Weitergabe Ihrer personenbezogenen Daten zu Zwecken im Zusammenhang mit Ihrer Anfrage einverstanden.'
+    settings:
+        plugin_name: 'Kontaktseite'
+        description: 'Konfigurieren Sie die Kontaktseite'
+        field_name_displayed: 'Namensfeld anzeigen'
+        field_name_required: 'Namensfeld ist erforderlich'
+        field_company_displayed: 'Unternehmensfeld anzeigen'
+        field_company_required: 'Unternehmensfeld ist erforderlich'
+        field_phone_number_displayed: 'Telefonfeld anzeigen'
+        field_phone_number_required: 'Telefonfeld ist erforderlich'
+        field_confirmation_displayed: 'Bestätigungsfeld anzeigen'
+        field_confirmation_label: 'Beschriftung des Bestätigungsfeldes'
+
+monsieurbiz_menu:
+    provider:
+        contact: 'Kontaktseite'
