@@ -23,7 +23,7 @@ class ContactUrlProvider extends AbstractUrlProvider
 
     protected string $code = self::PROVIDER_CODE;
 
-    protected string $icon = 'phone';
+    protected string $icon = 'tabler:phone';
 
     protected int $priority = 900;
 
